@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TrueTone Interiors | Interior Painting &amp; Cabinet Refinishing, Lansing, Michigan</title>
+<link rel="preconnect" href="https://api.fontshare.com" />
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="motion.js"></script>
+<style>
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+  body { margin: 0; background: #F5F0E6; color: #101721; font-family: "Satoshi", Helvetica, Arial, sans-serif; overflow-x: hidden; }
+  * { box-sizing: border-box; }
+  a { color: #101721; text-decoration: none; }
+  a:hover { color: #9F7B3C; }
+  img { display: block; }
+  input, textarea, button { font-family: inherit; }
+  ::selection { background: #B49142; color: #101721; }
+  [data-anim="fade"], [data-anim="line"], [data-anim="tile"], [data-intro] { opacity: 0; }
+  [data-anim="reveal"] { clip-path: inset(0 0 100% 0); }
+  html.anim-off [data-anim], html.anim-off [data-intro] { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  @media (prefers-reduced-motion: reduce) { [data-anim], [data-intro] { opacity: 1 !important; transform: none !important; clip-path: none !important; } }
+</style>
+</helmet>
+
+<div style="width:100%; background:#F5F0E6">
+
+  <header style="position:fixed; top:0; left:0; right:0; z-index:60; transform:{{ headerY }}; transition:transform 450ms cubic-bezier(.16,1,.3,1)">
+    <div data-veil="1" style="position:absolute; inset:0; pointer-events:none; background:rgba(16,23,33,0.92); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-bottom:1px solid rgba(180,145,66,0.28); opacity:0; transition:opacity 700ms cubic-bezier(.16,1,.3,1)"></div>
+    <div style="position:relative; min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:20px 32px; padding:12px clamp(18px,4vw,56px)">
+      <a href="#top" style="display:flex; align-items:center; gap:14px; text-decoration:none">
+        <span style="display:block; width:44px; height:44px; overflow:hidden; background:#101721; flex:none">
+          <img src="img/logo.jpg" alt="" style="width:100%; height:100%; object-fit:cover; transform:scale(2.6); transform-origin:50% 12%" />
+        </span>
+        <span style="display:block; line-height:0.8">
+          <span style="display:block; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:19px; letter-spacing:0.02em; color:#F5F0E6">TRUETONE</span>
+          <span style="display:block; font-weight:400; font-size:10.6px; letter-spacing:0.42em; color:#B49142; margin-top:6px">INTERIORS</span>
+        </span>
+      </a>
+
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex; align-items:center; gap:clamp(16px,2.3vw,34px); flex-wrap:wrap; justify-content:flex-end">
+          <a href="#top" style="font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#F5F0E6" style-hover="color:#E3B04B">Home</a>
+          <a href="#services" style="font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#F5F0E6" style-hover="color:#E3B04B">Services</a>
+          <a href="#work" style="font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#F5F0E6" style-hover="color:#E3B04B">Work</a>
+          <a href="#reviews" style="font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#F5F0E6" style-hover="color:#E3B04B">Reviews</a>
+          <a href="#about" style="font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#F5F0E6" style-hover="color:#E3B04B">About</a>
+          <a href="tel:+15173316876" style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-size:15px; font-weight:500; color:#F5F0E6; font-variant-numeric:tabular-nums" style-hover="color:#E3B04B">517.331.6876</a>
+          <a href="#estimate" style="display:inline-block; padding:13px 24px; background:#B49142; color:#101721; font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:background 500ms cubic-bezier(.16,1,.3,1)" style-hover="background:#E3B04B; color:#101721">Free Estimate</a>
+        </nav>
+      </sc-if>
+
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; align-items:center; gap:10px">
+          <a href="#estimate" style="display:flex; align-items:center; min-height:48px; padding:0 14px; background:#B49142; color:#101721; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase">Estimate</a>
+          <button type="button" onClick="{{ toggle }}" aria-label="Menu" style="width:52px; height:48px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; background:transparent; border:1px solid rgba(245,240,230,0.3); cursor:pointer; padding:0">
+            <span style="display:block; width:22px; height:1.5px; background:#F5F0E6"></span>
+            <span style="display:block; width:22px; height:1.5px; background:#F5F0E6"></span>
+            <span style="display:block; width:22px; height:1.5px; background:#F5F0E6"></span>
+          </button>
+        </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed; inset:0; z-index:70; background:#101721; display:flex; flex-direction:column; padding:18px clamp(20px,6vw,40px) 40px">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:74px">
+          <span style="display:block; line-height:0.8">
+            <span style="display:block; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:19px; letter-spacing:0.02em; color:#F5F0E6">TRUETONE</span>
+            <span style="display:block; font-size:10.6px; letter-spacing:0.42em; color:#B49142; margin-top:6px">INTERIORS</span>
+          </span>
+          <button type="button" onClick="{{ toggle }}" aria-label="Close menu" style="width:52px; height:48px; background:transparent; border:1px solid rgba(245,240,230,0.3); cursor:pointer; font-size:20px; line-height:1; color:#F5F0E6">✕</button>
+        </div>
+        <nav style="display:flex; flex-direction:column; gap:2px; margin-top:34px">
+          <a href="#top" onClick="{{ close }}" style="display:flex; align-items:center; min-height:56px; border-bottom:1px solid rgba(245,240,230,0.14); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:26px; color:#F5F0E6">Home</a>
+          <a href="#services" onClick="{{ close }}" style="display:flex; align-items:center; min-height:56px; border-bottom:1px solid rgba(245,240,230,0.14); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:26px; color:#F5F0E6">Services</a>
+          <a href="#work" onClick="{{ close }}" style="display:flex; align-items:center; min-height:56px; border-bottom:1px solid rgba(245,240,230,0.14); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:26px; color:#F5F0E6">Work</a>
+          <a href="#reviews" onClick="{{ close }}" style="display:flex; align-items:center; min-height:56px; border-bottom:1px solid rgba(245,240,230,0.14); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:26px; color:#F5F0E6">Reviews</a>
+          <a href="#about" onClick="{{ close }}" style="display:flex; align-items:center; min-height:56px; border-bottom:1px solid rgba(245,240,230,0.14); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:26px; color:#F5F0E6">About</a>
+          <a href="#estimate" onClick="{{ close }}" style="display:flex; align-items:center; min-height:56px; border-bottom:1px solid rgba(245,240,230,0.14); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:26px; color:#E3B04B">Free Estimate</a>
+        </nav>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:auto; padding-top:34px">
+          <a href="tel:+15173316876" style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:26px; color:#F5F0E6; font-variant-numeric:tabular-nums">517.331.6876</a>
+          <a href="mailto:truetoneinteriors@gmail.com" style="font-size:15px; color:rgba(245,240,230,0.75)">truetoneinteriors@gmail.com</a>
+          <span style="font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,230,0.6)">Lansing · Holt · Mid Michigan</span>
+        </div>
+      </div>
+    </sc-if>
+  </header>
+
+  <section id="top" style="position:relative; min-height:100dvh; background:#101721; color:#F5F0E6; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr)); align-items:stretch">
+    <div style="display:flex; flex-direction:column; justify-content:center; gap:34px; padding:clamp(130px,17vh,190px) clamp(20px,4.6vw,76px) clamp(56px,7vw,96px)">
+      <h1 style="margin:0; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(42px,5.6vw,86px); line-height:0.97; letter-spacing:-0.037em; color:#F5F0E6">
+        <span style="display:block; overflow:hidden; padding-bottom:0.04em"><span data-anim="line" style="display:block">Precision finishes.</span></span>
+        <span style="display:block; overflow:hidden; padding-bottom:0.04em"><span data-anim="line" style="display:block">Clean work.</span></span>
+        <span style="display:block; overflow:hidden; padding-bottom:0.04em"><span data-anim="line" style="display:block; color:#B49142">Timeless results.</span></span>
+      </h1>
+      <p data-intro="1" style="margin:0; max-width:42ch; font-size:clamp(15px,1.15vw,18px); line-height:1.6; color:rgba(245,240,230,0.8); text-wrap:pretty">Interior painting and cabinet refinishing in Lansing and Mid Michigan. Licensed, insured, and known for the prep other painters skip.</p>
+      <div data-intro="1" style="display:flex; flex-wrap:wrap; gap:14px; align-items:center">
+        <a href="#estimate" style="display:inline-block; padding:18px 36px; background:#B49142; color:#101721; font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:background 600ms cubic-bezier(.16,1,.3,1)" style-hover="background:#E3B04B; color:#101721">Get a Free Estimate</a>
+        <a href="tel:+15173316876" style="display:inline-block; padding:18px 32px; border:1px solid rgba(245,240,230,0.3); color:#F5F0E6; font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:border-color 600ms cubic-bezier(.16,1,.3,1)" style-hover="border-color:#F5F0E6; color:#F5F0E6">Call 517.331.6876</a>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; padding:max(0px, min(17vh, 190px, calc((100vw - 880px) * 100))) clamp(20px,4.6vw,76px) clamp(48px,7vw,96px)">
+      <div style="position:relative; width:min(100%, calc(72vh * 0.8)); margin:0 auto">
+        <div data-anim="reveal" style="overflow:hidden; background:#1C2531; aspect-ratio:4/5">
+          <img data-anim="heroimg" src="img/kitchen-navy.jpg" alt="Kitchen lowers refinished in deep navy" style="width:100%; height:100%; object-fit:cover; object-position:50% 50%" />
+        </div>
+        <div data-intro="1" style="display:flex; align-items:baseline; justify-content:space-between; gap:14px; padding-top:14px; margin-top:14px; border-top:1px solid rgba(245,240,230,0.16)">
+          <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:14px">Two tone kitchen, Lansing</span>
+          <span style="font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; color:#B49142">SW Sea Serpent</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#101721; color:#F5F0E6; padding:0 clamp(20px,4.6vw,76px)">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); border-top:1px solid rgba(245,240,230,0.14)">
+      <div style="display:flex; align-items:center; gap:12px; padding:26px 0">
+        <span style="font-size:15px; letter-spacing:0.1em; color:#E3B04B">★★★★★</span>
+        <span style="font-size:12.5px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase">5.0 on Google</span>
+      </div>
+      <div style="display:flex; align-items:center; padding:26px 0; font-size:12.5px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase">2025 Nextdoor Neighborhood Fave</div>
+      <div style="display:flex; align-items:center; padding:26px 0; font-size:12.5px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase">Licensed &amp; insured</div>
+      <div style="display:flex; align-items:center; padding:26px 0; font-size:12.5px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase">Sherwin Williams products</div>
+    </div>
+  </section>
+
+  <section style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr)); align-items:center; gap:clamp(40px,6vw,96px); padding:clamp(80px,10vw,150px) clamp(20px,4.6vw,76px)">
+    <div style="display:flex; flex-direction:column; gap:28px">
+      <h2 data-anim="fade" style="margin:0; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(34px,4.6vw,70px); letter-spacing:-0.035em; line-height:0.98; text-wrap:balance">Prep is where the finish is decided.</h2>
+      <p data-anim="fade" style="margin:0; max-width:44ch; font-size:16.5px; line-height:1.68; color:#555B62; text-wrap:pretty">Everybody loves the finished look. Nobody sees the hours of prep. Patching, sanding, sealing, caulking, protecting your floors and furniture. Most of the work happens before the paint goes on. That's what makes it last.</p>
+      <div data-anim="fade" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 28px; max-width:460px">
+        <span style="padding:14px 0; border-top:1px solid rgba(16,23,33,0.16); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:15px">Patch</span>
+        <span style="padding:14px 0; border-top:1px solid rgba(16,23,33,0.16); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:15px">Sand &amp; seal</span>
+        <span style="padding:14px 0; border-top:1px solid rgba(16,23,33,0.16); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:15px">Caulk &amp; tape</span>
+        <span style="padding:14px 0; border-top:1px solid rgba(16,23,33,0.16); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:15px">Protect everything</span>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(12px,1.6vw,24px); align-items:end">
+      <div data-anim="tile" style="overflow:hidden; background:#E6DFD1; aspect-ratio:9/14"><img src="img/prep.jpg" alt="Laying drop cloth before painting" style="width:100%; height:100%; object-fit:cover" /></div>
+      <div data-anim="tile" style="overflow:hidden; background:#E6DFD1; aspect-ratio:4/5; margin-bottom:clamp(30px,5vw,80px)"><img src="img/painter-window.jpg" alt="Painter taping a window, floors covered" style="width:100%; height:100%; object-fit:cover" /></div>
+    </div>
+  </section>
+
+  <section id="services" style="padding:clamp(40px,6vw,90px) clamp(20px,4.6vw,76px) clamp(80px,10vw,150px); scroll-margin-top:70px">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(30px,3.4vw,52px)">
+      <h2 data-anim="fade" style="margin:0; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(30px,3.6vw,54px); letter-spacing:-0.03em; line-height:1">What we do</h2>
+      <a data-anim="fade" href="#estimate" style="font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#101721; border-bottom:1px solid #B49142; padding-bottom:5px" style-hover="color:#9F7B3C">Free estimate</a>
+    </div>
+    <div data-anim="rule" style="height:1px; background:rgba(16,23,33,0.16); margin-bottom:clamp(30px,3.4vw,52px)"></div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:clamp(18px,2vw,32px)">
+      <div data-anim="tile" style="display:flex; flex-direction:column">
+        <div style="overflow:hidden; background:#E6DFD1; aspect-ratio:4/5"><img src="img/living-creamy.jpg" alt="Living room repainted in SW Creamy" style="width:100%; height:100%; object-fit:cover; transition:transform 1600ms cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.05)" /></div>
+        <div style="display:flex; gap:12px; align-items:baseline; margin-top:16px; padding-top:14px; border-top:1px solid rgba(16,23,33,0.16)">
+          <span style="font-size:12px; color:#9F7B3C; font-variant-numeric:tabular-nums">01</span>
+          <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:17px">Interior painting</span>
+        </div>
+        <p style="margin:10px 0 0; font-size:14.5px; line-height:1.6; color:#555B62; text-wrap:pretty">Walls, ceilings, trim and doors. Tall ceilings and tight corners too.</p>
+      </div>
+      <div data-anim="tile" style="display:flex; flex-direction:column">
+        <div style="overflow:hidden; background:#E6DFD1; aspect-ratio:4/5"><img src="img/doors-sprayed.jpg" alt="Cabinet doors freshly spray finished" style="width:100%; height:100%; object-fit:cover; transition:transform 1600ms cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.05)" /></div>
+        <div style="display:flex; gap:12px; align-items:baseline; margin-top:16px; padding-top:14px; border-top:1px solid rgba(16,23,33,0.16)">
+          <span style="font-size:12px; color:#9F7B3C; font-variant-numeric:tabular-nums">02</span>
+          <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:17px">Cabinet refinishing</span>
+        </div>
+        <p style="margin:10px 0 0; font-size:14.5px; line-height:1.6; color:#555B62; text-wrap:pretty">Cleaned, sanded, primed and sprayed. Factory smooth.</p>
+      </div>
+      <div data-anim="tile" style="display:flex; flex-direction:column">
+        <div style="overflow:hidden; background:#E6DFD1; aspect-ratio:4/5"><img src="img/wallpaper-before.jpg" alt="Kitchen mid wallpaper removal with floors protected" style="width:100%; height:100%; object-fit:cover; transition:transform 1600ms cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.05)" /></div>
+        <div style="display:flex; gap:12px; align-items:baseline; margin-top:16px; padding-top:14px; border-top:1px solid rgba(16,23,33,0.16)">
+          <span style="font-size:12px; color:#9F7B3C; font-variant-numeric:tabular-nums">03</span>
+          <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:17px">Wallpaper removal</span>
+        </div>
+        <p style="margin:10px 0 0; font-size:14.5px; line-height:1.6; color:#555B62; text-wrap:pretty">Removal, wall repair, sealing and a premium finish.</p>
+      </div>
+      <div data-anim="tile" style="display:flex; flex-direction:column">
+        <div style="overflow:hidden; background:#E6DFD1; aspect-ratio:4/5"><img src="img/drywall-after.jpg" alt="Bedroom after water damaged drywall was repaired" style="width:100%; height:100%; object-fit:cover; transition:transform 1600ms cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.05)" /></div>
+        <div style="display:flex; gap:12px; align-items:baseline; margin-top:16px; padding-top:14px; border-top:1px solid rgba(16,23,33,0.16)">
+          <span style="font-size:12px; color:#9F7B3C; font-variant-numeric:tabular-nums">04</span>
+          <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:17px">Drywall repair</span>
+        </div>
+        <p style="margin:10px 0 0; font-size:14.5px; line-height:1.6; color:#555B62; text-wrap:pretty">Water damage, patching and texture matching. Patch, match, repaint.</p>
+      </div>
+    </div>
+    <div data-anim="fade" style="display:flex; flex-wrap:wrap; gap:10px 28px; align-items:baseline; margin-top:clamp(36px,4vw,60px); padding-top:22px; border-top:1px solid rgba(16,23,33,0.16)">
+      <span style="font-size:12px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:#555B62">Also</span>
+      <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:16px">Exteriors &amp; front doors</span>
+      <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:16px">Deck repair &amp; staining</span>
+      <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:16px">Caulking &amp; trim</span>
+      <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:16px">Rental turnovers</span>
+    </div>
+  </section>
+
+  <section style="background:#101721; color:#F5F0E6; padding:clamp(88px,12vw,180px) clamp(20px,4.6vw,76px)">
+    <blockquote data-anim="fade" style="margin:0; max-width:22ch; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:clamp(32px,5vw,74px); line-height:1.02; letter-spacing:-0.035em; text-wrap:balance">Cabinets don't need to be torn out to feel brand new.</blockquote>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:34px; align-items:end; margin-top:clamp(40px,5vw,76px)">
+      <p data-anim="fade" style="margin:0; max-width:46ch; font-size:16px; line-height:1.65; color:rgba(245,240,230,0.76); text-wrap:pretty">If they're in good shape, refinishing transforms the room for a fraction of the cost of replacing. Doors removed and labeled, degreased, sanded, primed, spray finished and reinstalled.</p>
+      <div data-anim="fade" style="justify-self:start">
+        <a href="#estimate" style="display:inline-block; padding:18px 36px; border:1px solid rgba(180,145,66,0.7); color:#F5F0E6; font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; transition:background 600ms cubic-bezier(.16,1,.3,1), color 600ms cubic-bezier(.16,1,.3,1)" style-hover="background:#B49142; color:#101721; border-color:#B49142">Replace or refinish? Ask us</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(80px,10vw,150px) clamp(20px,4.6vw,76px); background:#EFE8DB">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(30px,3.4vw,52px)">
+      <h2 data-anim="fade" style="margin:0; max-width:18ch; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(30px,3.6vw,54px); letter-spacing:-0.03em; line-height:1; text-wrap:balance">Old oak to modern two tone in three days.</h2>
+      <span data-anim="fade" style="font-size:12px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:#555B62">Uppers SW Natural Choice · Lowers SW Sea Serpent</span>
+    </div>
+    <div data-anim="rule" style="height:1px; background:rgba(16,23,33,0.16); margin-bottom:clamp(30px,3.4vw,52px)"></div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr)); gap:clamp(14px,1.6vw,24px)">
+      <figure data-anim="tile" style="margin:0; position:relative">
+        <div style="overflow:hidden; background:#E6DFD1; aspect-ratio:5/4"><img src="img/kitchen-before.jpg" alt="Oak kitchen before refinishing" style="width:100%; height:100%; object-fit:cover" /></div>
+        <span style="position:absolute; left:14px; top:14px; padding:7px 12px; background:rgba(16,23,33,0.88); color:#F5F0E6; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase">Before</span>
+      </figure>
+      <figure data-anim="tile" style="margin:0; position:relative">
+        <div style="overflow:hidden; background:#E6DFD1; aspect-ratio:5/4"><img src="img/kitchen-after.jpg" alt="Same kitchen after, white uppers and navy lowers" style="width:100%; height:100%; object-fit:cover" /></div>
+        <span style="position:absolute; left:14px; top:14px; padding:7px 12px; background:#B49142; color:#101721; font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase">After</span>
+      </figure>
+    </div>
+  </section>
+
+  <section id="work" style="padding:clamp(80px,10vw,150px) clamp(20px,4.6vw,76px); scroll-margin-top:70px">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(30px,3.4vw,52px)">
+      <h2 data-anim="fade" style="margin:0; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(30px,3.6vw,54px); letter-spacing:-0.03em; line-height:1">Recent work</h2>
+      <a data-anim="fade" href="https://www.facebook.com/people/TrueTone-Interiors/61577254798084/" style="font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#101721; border-bottom:1px solid #B49142; padding-bottom:5px" style-hover="color:#9F7B3C">More on Facebook</a>
+    </div>
+    <div data-anim="rule" style="height:1px; background:rgba(16,23,33,0.16); margin-bottom:clamp(30px,3.4vw,52px)"></div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:clamp(18px,2vw,34px)">
+      <sc-for list="{{ work }}" as="w" hint-placeholder-count="6">
+        <figure data-anim="tile" style="margin:0">
+          <div style="overflow:hidden; background:#E6DFD1; aspect-ratio:4/3">
+            <img src="{{ w.src }}" alt="{{ w.alt }}" style="width:100%; height:100%; object-fit:cover; transition:transform 1600ms cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.05)" />
+          </div>
+          <figcaption style="display:flex; justify-content:space-between; gap:12px; padding-top:16px; border-top:1px solid rgba(16,23,33,0.16); margin-top:16px">
+            <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:16px">{{ w.title }}</span>
+            <span style="font-size:13px; color:#555B62; text-align:right">{{ w.note }}</span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="reviews" style="background:#101721; color:#F5F0E6; padding:clamp(80px,10vw,150px) clamp(20px,4.6vw,76px); scroll-margin-top:70px">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:clamp(30px,3.4vw,52px)">
+      <h2 data-anim="fade" style="margin:0; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(30px,3.6vw,54px); letter-spacing:-0.03em; line-height:1">From the neighbors</h2>
+      <div data-anim="fade" style="display:flex; align-items:center; gap:12px">
+        <span style="font-size:15px; letter-spacing:0.1em; color:#E3B04B">★★★★★</span>
+        <span style="font-size:12.5px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,240,230,0.8)">5.0 · Google reviews</span>
+      </div>
+    </div>
+    <div data-anim="rule" style="height:1px; background:rgba(245,240,230,0.16); margin-bottom:clamp(30px,3.4vw,52px)"></div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:clamp(28px,3.4vw,56px)">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+        <figure data-anim="tile" style="margin:0; display:flex; flex-direction:column; gap:22px">
+          <blockquote style="margin:0; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:500; font-size:clamp(18px,1.55vw,22px); line-height:1.4; letter-spacing:-0.01em; text-wrap:pretty">“{{ r.quote }}”</blockquote>
+          <figcaption style="display:flex; justify-content:space-between; gap:12px; padding-top:14px; border-top:1px solid rgba(245,240,230,0.16)">
+            <span style="font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase">{{ r.name }}</span>
+            <span style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#B49142">{{ r.job }}</span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+    <p data-anim="fade" style="margin:clamp(60px,7vw,110px) 0 0; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(28px,4vw,58px); line-height:1.02; letter-spacing:-0.035em; max-width:22ch; text-wrap:balance">“Hire Javonnie. Dude doesn't miss a <span style="color:#B49142">spot</span>.”</p>
+    <span data-anim="fade" style="display:block; margin-top:18px; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,230,0.6)">Nextdoor neighbor, Creston</span>
+  </section>
+
+  <section id="about" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); align-items:stretch; scroll-margin-top:70px">
+    <div style="overflow:hidden; background:#E6DFD1; min-height:62vh"><img data-anim="parallax" src="img/team.jpg" alt="The TrueTone crew in branded shirts" style="width:100%; height:100%; object-fit:cover" /></div>
+    <div style="display:flex; flex-direction:column; justify-content:center; gap:26px; padding:clamp(60px,7.5vw,120px) clamp(20px,4.6vw,76px)">
+      <h2 data-anim="fade" style="margin:0; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(28px,3.4vw,50px); letter-spacing:-0.03em; line-height:1.04; text-wrap:balance">Hi neighbors, I'm Javonnie.</h2>
+      <p data-anim="fade" style="margin:0; max-width:44ch; font-size:16px; line-height:1.68; color:#555B62; text-wrap:pretty">I started TrueTone in 2025 with one standard: take pride in every project like it's my own home. Show up when I say I will, protect your floors and belongings, answer fast, and never cut corners on prep.</p>
+      <div data-anim="fade" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 28px; max-width:460px">
+        <span style="padding:14px 0; border-top:1px solid rgba(16,23,33,0.16); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:15px">Prep first</span>
+        <span style="padding:14px 0; border-top:1px solid rgba(16,23,33,0.16); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:15px">Clean jobsite</span>
+        <span style="padding:14px 0; border-top:1px solid rgba(16,23,33,0.16); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:15px">Written estimates</span>
+        <span style="padding:14px 0; border-top:1px solid rgba(16,23,33,0.16); font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:15px">Fully insured</span>
+      </div>
+      <blockquote data-anim="fade" style="margin:0; padding-left:22px; border-left:1px solid #B49142; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:500; font-size:clamp(17px,1.5vw,22px); line-height:1.4; letter-spacing:-0.01em">
+        “Work will be there when you get back. Moments like this won't.”
+        <span style="display:block; margin-top:12px; font-family:'Satoshi',Helvetica,sans-serif; font-weight:400; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#555B62">Javonnie, on a day off fishing</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="estimate" style="background:#101721; color:#F5F0E6; padding:clamp(88px,11vw,170px) clamp(20px,4.6vw,76px); scroll-margin-top:70px; border-top:1px solid rgba(180,145,66,0.3)">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr)); gap:clamp(44px,6vw,96px); align-items:start">
+      <div style="display:flex; flex-direction:column; gap:26px">
+        <h2 data-anim="fade" style="margin:0; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(34px,4.6vw,68px); letter-spacing:-0.035em; line-height:0.98; text-wrap:balance">Send a few photos. We'll take a look.</h2>
+        <p data-anim="fade" style="margin:0; max-width:40ch; font-size:16px; line-height:1.65; color:rgba(245,240,230,0.76); text-wrap:pretty">A few pictures and a quick description is all it takes. You'll get a fast, written estimate. No pressure.</p>
+        <div data-anim="fade" style="display:flex; flex-direction:column; gap:16px; margin-top:14px">
+          <a href="tel:+15173316876" style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:700; font-size:clamp(28px,3vw,42px); letter-spacing:-0.02em; color:#F5F0E6; font-variant-numeric:tabular-nums" style-hover="color:#E3B04B">517.331.6876</a>
+          <a href="mailto:truetoneinteriors@gmail.com" style="align-self:flex-start; font-size:16px; color:rgba(245,240,230,0.82); border-bottom:1px solid rgba(245,240,230,0.3); padding-bottom:4px" style-hover="color:#F5F0E6">truetoneinteriors@gmail.com</a>
+          <span style="font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,240,230,0.6); line-height:1.7">Lansing · East Lansing · Holt · Okemos · DeWitt · Grand Ledge</span>
+        </div>
+      </div>
+
+      <div data-anim="fade">
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display:flex; flex-direction:column; gap:22px">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:22px">
+              <label style="display:flex; flex-direction:column; gap:8px; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,230,0.7)">Name
+                <input required="required" name="name" style="background:transparent; border:0; border-bottom:1px solid rgba(245,240,230,0.3); padding:10px 0; font-size:17px; color:#F5F0E6; outline:none; letter-spacing:0; text-transform:none" style-focus="border-bottom-color:#B49142" />
+              </label>
+              <label style="display:flex; flex-direction:column; gap:8px; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,230,0.7)">Phone
+                <input required="required" name="phone" type="tel" style="background:transparent; border:0; border-bottom:1px solid rgba(245,240,230,0.3); padding:10px 0; font-size:17px; color:#F5F0E6; outline:none; letter-spacing:0" style-focus="border-bottom-color:#B49142" />
+              </label>
+              <label style="display:flex; flex-direction:column; gap:8px; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,230,0.7)">Email
+                <input name="email" type="email" style="background:transparent; border:0; border-bottom:1px solid rgba(245,240,230,0.3); padding:10px 0; font-size:17px; color:#F5F0E6; outline:none; letter-spacing:0" style-focus="border-bottom-color:#B49142" />
+              </label>
+              <label style="display:flex; flex-direction:column; gap:8px; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,230,0.7)">City
+                <input name="city" style="background:transparent; border:0; border-bottom:1px solid rgba(245,240,230,0.3); padding:10px 0; font-size:17px; color:#F5F0E6; outline:none; letter-spacing:0" style-focus="border-bottom-color:#B49142" />
+              </label>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:12px">
+              <span style="font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,230,0.7)">Project</span>
+              <div style="display:flex; flex-wrap:wrap; gap:8px">
+                <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
+                  <button type="button" onClick="{{ c.toggle }}" style="min-height:44px; padding:0 16px; border:1px solid {{ c.border }}; background:{{ c.bg }}; color:{{ c.fg }}; font-size:13.5px; font-weight:500; cursor:pointer; transition:background 300ms, color 300ms">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <label style="display:flex; flex-direction:column; gap:8px; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,230,0.7)">Tell us about it
+              <textarea name="details" rows="3" placeholder="Rooms, timing, colors you're considering" style="background:transparent; border:0; border-bottom:1px solid rgba(245,240,230,0.3); padding:10px 0; font-size:17px; color:#F5F0E6; outline:none; resize:vertical; letter-spacing:0; text-transform:none" style-focus="border-bottom-color:#B49142"></textarea>
+            </label>
+            <label style="display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:64px; padding:0 20px; border:1px dashed rgba(180,145,66,0.6); cursor:pointer">
+              <span style="font-size:14.5px; color:#F5F0E6">{{ photoLabel }}</span>
+              <span style="font-size:11.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#E3B04B">Add photos</span>
+              <input type="file" accept="image/*" multiple="multiple" onChange="{{ onFiles }}" style="display:none" />
+            </label>
+            <button type="submit" style="align-self:flex-start; padding:18px 36px; background:#B49142; color:#101721; border:0; font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:background 600ms cubic-bezier(.16,1,.3,1)" style-hover="background:#E3B04B">Request my estimate</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-direction:column; gap:18px; padding:clamp(28px,4vw,48px) 0; border-top:1px solid #B49142">
+            <span style="font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(28px,3vw,40px); letter-spacing:-0.03em">Thanks. We'll be in touch fast.</span>
+            <p style="margin:0; max-width:40ch; font-size:16px; line-height:1.65; color:rgba(245,240,230,0.76)">Javonnie reviews every request himself. Need it sooner? Call or text 517.331.6876.</p>
+            <button type="button" onClick="{{ reset }}" style="align-self:flex-start; background:transparent; border:0; border-bottom:1px solid rgba(245,240,230,0.4); padding:0 0 4px; color:#F5F0E6; font-size:12.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer">Send another</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#0B1018; color:#F5F0E6; padding:clamp(52px,6vw,92px) clamp(20px,4.6vw,76px) {{ footPad }}">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:clamp(8px,3vw,44px) 44px; align-items:start">
+      <div style="display:flex; flex-direction:column; gap:18px; padding-bottom:24px">
+        <a href="#top" style="display:block; line-height:0.8; text-decoration:none">
+          <span style="display:block; font-family:'Cabinet Grotesk',Helvetica,sans-serif; font-weight:800; font-size:clamp(34px,4.2vw,58px); letter-spacing:-0.01em; color:#F5F0E6">TRUETONE</span>
+          <span style="display:block; font-weight:300; font-size:clamp(12px,1.4vw,19px); letter-spacing:0.5em; color:#B49142; margin-top:12px">INTERIORS</span>
+        </a>
+        <span style="font-size:15px; color:rgba(245,240,230,0.7)">Craftsmanship with intention.</span>
+      </div>
+      <sc-for list="{{ footGroups }}" as="g" hint-placeholder-count="3">
+        <div style="border-top:1px solid rgba(245,240,230,0.14)">
+          <button type="button" onClick="{{ g.toggle }}" aria-expanded="{{ g.open }}" style="width:100%; min-height:56px; display:flex; align-items:center; justify-content:space-between; gap:12px; background:transparent; border:0; padding:0; color:#B49142; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; cursor:{{ g.cursor }}; text-align:left">
+            <span>{{ g.title }}</span>
+            <span style="font-size:18px; font-weight:400; color:#F5F0E6">{{ g.icon }}</span>
+          </button>
+          <sc-if value="{{ g.open }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; flex-direction:column; gap:4px; padding-bottom:22px">
+              <sc-for list="{{ g.links }}" as="l" hint-placeholder-count="4">
+                <a href="{{ l.href }}" style="display:flex; align-items:center; min-height:40px; font-size:15px; color:rgba(245,240,230,0.8); overflow-wrap:anywhere" style-hover="color:#F5F0E6">{{ l.label }}</a>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="height:1px; background:rgba(245,240,230,0.14); margin:clamp(20px,3vw,40px) 0 22px"></div>
+    <span style="display:block; font-size:12px; line-height:1.7; color:rgba(245,240,230,0.5)">© 2026 TrueTone Interiors, LLC · Licensed &amp; insured · Lansing, Michigan</span>
+  </footer>
+
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <a href="tel:+15173316876" style="position:fixed; left:14px; right:14px; bottom:14px; z-index:55; display:flex; align-items:center; justify-content:center; min-height:54px; background:#B49142; color:#101721; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; box-shadow:0 10px 30px rgba(16,23,33,0.35)">Call or text 517.331.6876</a>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: typeof window !== 'undefined' && window.innerWidth < 900, open: false, picked: ['Interior painting'], files: 0, sent: false };
+
+  componentDidMount() {
+    this._onResize = () => {
+      const n = window.innerWidth < 900;
+      if (n !== this.state.narrow) this.setState({ narrow: n, open: n ? this.state.open : false });
+    };
+    window.addEventListener('resize', this._onResize);
+    this._onResize();
+    this._lastY = window.scrollY;
+    this._onScroll = () => {
+      const y = window.scrollY, d = y - this._lastY;
+      if (Math.abs(d) < 6) return;
+      const hide = d > 0 && y > 140;
+      this._lastY = y;
+      if (hide !== this.state.hideHeader) this.setState({ hideHeader: hide });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this.boot(0);
+    this._guard = setInterval(() => {
+      document.querySelectorAll('[data-anim], [data-intro]').forEach((el) => {
+        if (!el.dataset.mswDone) {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight) { el.style.opacity = '1'; el.style.transform = 'none'; el.style.clipPath = 'none'; }
+        }
+      });
+    }, 1200);
+  }
+
+  componentDidUpdate() {
+    clearTimeout(this._re);
+    this._re = setTimeout(() => { if (window.MSWMotion) window.MSWMotion.init({ motion: this.props.motion ?? true }); }, 120);
+  }
+
+  boot(n) {
+    if (window.MSWMotion) { window.MSWMotion.init({ motion: this.props.motion ?? true }); return; }
+    if (n > 60) { document.documentElement.classList.add('anim-off'); return; }
+    setTimeout(() => this.boot(n + 1), 60);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('scroll', this._onScroll);
+    clearInterval(this._guard); clearTimeout(this._re);
+    document.body.style.overflow = '';
+    if (window.MSWMotion) window.MSWMotion.kill();
+  }
+
+  renderVals() {
+    const s = this.state;
+    const setOpen = (open) => { document.body.style.overflow = open ? 'hidden' : ''; this.setState({ open }); };
+    const services = ['Interior painting', 'Cabinets', 'Wallpaper removal', 'Drywall repair', 'Exterior / deck', 'Rental turnover'];
+    const fo = s.footOpen || {};
+    const groups = [
+      { key: 'explore', title: 'Explore', links: [['Home', '#top'], ['Services', '#services'], ['Work', '#work'], ['Reviews', '#reviews'], ['About', '#about'], ['Free Estimate', '#estimate']] },
+      { key: 'connect', title: 'Connect', links: [['Facebook', 'https://www.facebook.com/people/TrueTone-Interiors/61577254798084/'], ['TikTok', 'https://www.tiktok.com/@truetone_jr517'], ['Nextdoor', 'https://nextdoor.com/pages/truetone-interiors-lansing-mi/'], ['Join the crew', 'mailto:truetoneinteriors@gmail.com?subject=Join%20the%20crew']] },
+      { key: 'contact', title: 'Contact', links: [['517.331.6876', 'tel:+15173316876'], ['truetoneinteriors@gmail.com', 'mailto:truetoneinteriors@gmail.com'], ['Lansing · Holt · Mid Michigan', '#estimate']] }
+    ];
+    return {
+      headerY: s.hideHeader && !s.open ? 'translateY(-100%)' : 'none',
+      footPad: s.narrow ? '96px' : 'clamp(30px,3vw,44px)',
+      footGroups: groups.map((g) => {
+        const open = !s.narrow || !!fo[g.key];
+        return {
+          title: g.title, open,
+          icon: s.narrow ? (open ? '−' : '+') : '',
+          cursor: s.narrow ? 'pointer' : 'default',
+          links: g.links.map(([label, href]) => ({ label, href })),
+          toggle: () => { if (s.narrow) this.setState((st) => ({ footOpen: { ...(st.footOpen || {}), [g.key]: !(st.footOpen || {})[g.key] } })); }
+        };
+      }),
+      wide: !s.narrow,
+      narrow: s.narrow,
+      open: s.open,
+      toggle: () => setOpen(!s.open),
+      close: () => setOpen(false),
+      showBanner: this.props.showBanner ?? true,
+      work: [
+        { src: 'img/great-room.jpg', alt: 'Vaulted great room repainted', title: 'Great room', note: 'Vaulted ceilings' },
+        { src: 'img/fireplace.jpg', alt: 'Living room and fireplace in Accessible Beige', title: 'Fireplace wall', note: 'SW Accessible Beige' },
+        { src: 'img/frosted-fern.jpg', alt: 'Kitchen after wallpaper removal in Frosted Fern', title: 'Kitchen refresh', note: 'SW Frosted Fern' },
+        { src: 'img/honey-bees.jpg', alt: 'Living room in warm Honey Bees yellow', title: 'Living room', note: 'SW Honey Bees' },
+        { src: 'img/cabinet-after.jpg', alt: 'Refinished two tone kitchen cabinets', title: 'Cabinet refinish', note: 'Two tone' },
+        { src: 'img/deck.jpg', alt: 'Deck repaired and stained Moss Olive', title: 'Deck repair & stain', note: 'Moss Olive' }
+      ],
+      reviews: [
+        { quote: 'Meticulous about cleaning up and treating all of your belongings with care. I got three estimates and his quote was the lowest by far.', name: 'Joy S.', job: 'Whole interior' },
+        { quote: 'A flawless paint job that brought every room to life. The lines were crisp and the colors applied evenly.', name: 'Brianna', job: 'Interior' },
+        { quote: 'Outstanding job, high quality work and paint. I am sure this paint job will last far longer than others I have had done.', name: 'Julie S.', job: 'Front porch' }
+      ],
+      chips: services.map((label) => {
+        const on = s.picked.includes(label);
+        return {
+          label,
+          bg: on ? '#B49142' : 'transparent',
+          fg: on ? '#101721' : '#F5F0E6',
+          border: on ? '#B49142' : 'rgba(245,240,230,0.3)',
+          toggle: () => this.setState((st) => ({ picked: st.picked.includes(label) ? st.picked.filter((x) => x !== label) : [...st.picked, label] }))
+        };
+      }),
+      photoLabel: s.files ? s.files + (s.files === 1 ? ' photo attached' : ' photos attached') : 'Photos work great to get started',
+      onFiles: (e) => this.setState({ files: (e.target.files || []).length }),
+      notSent: !s.sent,
+      sent: s.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false, files: 0 })
+    };
+  }
+}
+</script>
+</body>
+</html>
